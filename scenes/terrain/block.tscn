@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://0x5d7r614y4x"]
-
-[ext_resource type="PackedScene" uid="uid://cguw1alg3oenm" path="res://models/block.blend" id="1_gild5"]
-
-[node name="block" instance=ExtResource("1_gild5")]

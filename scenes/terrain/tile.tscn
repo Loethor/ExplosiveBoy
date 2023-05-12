@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd6sgbwohq2nj"]
-
-[ext_resource type="PackedScene" uid="uid://drhx5r4nh3bc1" path="res://models/tile.blend" id="1_or67t"]
-
-[node name="tile" instance=ExtResource("1_or67t")]

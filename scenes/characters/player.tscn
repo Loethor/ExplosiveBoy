@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bix035khn8spa"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_rapf6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_owj6d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hq67"]
+albedo_color = Color(0.239216, 0.494118, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g31fd"]
+size = Vector3(1, 2, 1)
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+script = ExtResource("1_rapf6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_owj6d")
+surface_material_override/0 = SubResource("StandardMaterial3D_4hq67")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_g31fd")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.430137, 0)
+target_position = Vector3(0, 0, 0)
