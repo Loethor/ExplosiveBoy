@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://5rsd6w12ud3g"]
+
+[ext_resource type="PackedScene" uid="uid://0x5d7r614y4x" path="res://scenes/terrain/block.tscn" id="1_m4p70"]
+[ext_resource type="PackedScene" uid="uid://drhx5r4nh3bc1" path="res://models/tile.blend" id="2_b8g33"]
+
+[node name="block" instance=ExtResource("1_m4p70")]
+
+[node name="tile" parent="." index="1" instance=ExtResource("2_b8g33")]
