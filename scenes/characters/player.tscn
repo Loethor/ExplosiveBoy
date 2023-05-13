@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bix035khn8spa"]
+[gd_scene load_steps=6 format=3 uid="uid://bix035khn8spa"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_rapf6"]
+[ext_resource type="Script" path="res://scenes/characters/PlayerCamera.gd" id="2_x7pfi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_owj6d"]
 
@@ -24,3 +25,11 @@ shape = SubResource("BoxShape3D_g31fd")
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.430137, 0)
 target_position = Vector3(0, 0, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 7, 5)
+current = true
+script = ExtResource("2_x7pfi")
+lerp_speed = 0.1
+target_path = NodePath("..")
+offset = Vector3(0, 7, 5)
