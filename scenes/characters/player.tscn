@@ -13,6 +13,7 @@ size = Vector3(1, 2, 1)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+collision_mask = 6
 script = ExtResource("1_rapf6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -25,6 +26,8 @@ shape = SubResource("BoxShape3D_g31fd")
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.430137, 0)
 target_position = Vector3(0, 0, 0)
+collision_mask = 6
+collide_with_areas = true
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 7, 5)
