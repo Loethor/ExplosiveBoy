@@ -20,6 +20,7 @@ func _unhandled_input(event):
 
 func move(direction):
 	print("Initial position: %s" % position)
+
 	# move the raycast to the new position
 	ray.target_position = DIRECTIONS[direction] * TILE_SIZE
 	ray.force_raycast_update()
@@ -29,7 +30,10 @@ func move(direction):
 
 func place_bomb():
 	var bomb := bomb_scene.instantiate()
+
+	# the bomb is created at player's position
 	bomb.position = position
+	bomb.position.y = 0
 	get_parent().add_child(bomb)
 
 

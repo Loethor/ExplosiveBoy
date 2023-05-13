@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://wi44v5dgkb70"]
+
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_2b61g"]
+
+[node name="UI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2b61g")
+
+[node name="MainMenu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Label" type="Label" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Explosive boy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="LevelSelector" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_right = 1152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelSelector"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelector/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelector/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Choose a level:"
+
+[node name="Level1Button" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 1"
+
+[node name="BackButton" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

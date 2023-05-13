@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxc88nwg761r0"]
+[gd_scene load_steps=7 format=3 uid="uid://bxc88nwg761r0"]
 
 [ext_resource type="PackedScene" uid="uid://cyp8awfbvu1hv" path="res://scenes/levels/level_1.tscn" id="1_4va63"]
+[ext_resource type="PackedScene" uid="uid://wi44v5dgkb70" path="res://scenes/ui/ui.tscn" id="1_76yti"]
 [ext_resource type="PackedScene" uid="uid://bix035khn8spa" path="res://scenes/characters/player.tscn" id="2_78f15"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bul0i"]
@@ -17,6 +18,10 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="world" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_76yti")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t045v")

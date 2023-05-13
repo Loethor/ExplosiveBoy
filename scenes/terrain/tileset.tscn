@@ -3,3 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://cp7771kbk01fw" path="res://models/tileset.glb" id="1_j3nrk"]
 
 [node name="tileset" instance=ExtResource("1_j3nrk")]
+
+[node name="StaticBody3D" parent="tile" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="tile_brittle_block" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="tile_block" index="0"]
+collision_layer = 2
+collision_mask = 0
