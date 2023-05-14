@@ -11,20 +11,22 @@ var grid_types = {
 	"block": 2,
 }
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.has_exploded.connect(_explosion_on_area.bind())
 
-func _explosion_on_area(area:Vector2):
-	print("Exploded on %s" % area)
-	print(Vector3i(area.x, 0, area.y))
-	var target_position = Vector3i(area.x, 0, area.y)
-	var grid_id = grid_map.get_cell_item(target_position)
-	if grid_id == grid_types["brittle_block"]:
-		grid_map.set_cell_item(target_position, 0)
-	var explosion = explosion_resource.instantiate()
-	explosion.position = target_position + Vector3i(0,1,0)
-	add_child(explosion)
+func _explosion_on_area(target_area:Vector2):
 
-	print(grid_id)
+	# convert target area (2D vector) into grid position (3D vector)
+	var target_grid_position = Vector3i(target_area.x, 0, target_area.y)
+	var grid_id = grid_map.get_cell_item(target_grid_position)
+
+	# destroy brittle block
+	if grid_id == grid_types["brittle_block"]:
+		grid_map.set_cell_item(target_grid_position, 0)
+
+	# create explosions
+	var explosion = explosion_resource.instantiate()
+	# explosion needs to be raised 1 in y coordinate
+	explosion.position = target_grid_position + Vector3i(0,1,0)
+	add_child(explosion)
