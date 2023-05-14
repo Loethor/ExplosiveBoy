@@ -65,10 +65,16 @@ text = "Choose a level:"
 layout_mode = 2
 text = "Level 1"
 
+[node name="Level2Button" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 2"
+
 [node name="BackButton" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
 [connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

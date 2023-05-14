@@ -66,3 +66,12 @@ func _on_exit_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	move_to_previous_menu()
+
+func _on_level_1_button_pressed() -> void:
+	World.load_level("level_1")
+	ui.visible = false
+
+
+func _on_level_2_button_pressed() -> void:
+	World.load_level("level_2")
+	ui.visible = false
