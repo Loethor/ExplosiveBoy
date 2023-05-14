@@ -19,6 +19,16 @@ func _ready() -> void:
 	current_menu = main_menu
 
 
+func _unhandled_input(event):
+	if event.is_action_pressed("menu"):
+		ui.visible = !ui.visible
+		if ui.visible:
+			reset_menus()
+			get_tree().paused = true
+		else:
+			get_tree().paused = false
+
+
 func move_to_next_menu(next_menu_id: String):
 	var next_menu = get_menu_from_menu_id(next_menu_id)
 #	current_menu.global_position = Vector2(-menu_original_size.x,0)
@@ -28,6 +38,8 @@ func move_to_next_menu(next_menu_id: String):
 	tween.tween_property(next_menu, "global_position", menu_original_position, MENU_TRANSITION_TIME).set_trans(Tween.TRANS_LINEAR)
 	menu_stack.append(current_menu)
 	current_menu = next_menu
+
+
 
 func move_to_previous_menu():
 	var previous_menu = menu_stack.pop_back()
@@ -46,20 +58,14 @@ func get_menu_from_menu_id(menu_id: String) -> Control:
 		"level_selector": return level_selector
 		_: return main_menu
 
-
-func _unhandled_input(event):
-	if event.is_action_pressed("menu"):
-		ui.visible = !ui.visible
-		if ui.visible:
-			get_tree().paused = true
-		else:
-			get_tree().paused = false
-
-
+func reset_menus():
+	main_menu.global_position = menu_original_position
+	level_selector.global_position = Vector2(menu_original_size.x,0)
+	current_menu = main_menu
+	menu_stack = []
 
 func _on_play_button_pressed() -> void:
 	move_to_next_menu("level_selector")
-
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
@@ -71,13 +77,10 @@ func _on_level_1_button_pressed() -> void:
 	get_parent().get_parent().load_level("level_1")
 	ui.visible = false
 
-
 func _on_level_2_button_pressed() -> void:
 	get_parent().get_parent().load_level("level_2")
 	ui.visible = false
 
-
 func _on_level_3_button_pressed() -> void:
 	get_parent().get_parent().load_level("level_3")
 	ui.visible = false
-
