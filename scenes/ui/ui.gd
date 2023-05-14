@@ -68,10 +68,16 @@ func _on_back_button_pressed() -> void:
 	move_to_previous_menu()
 
 func _on_level_1_button_pressed() -> void:
-	World.load_level("level_1")
+	get_parent().get_parent().load_level("level_1")
 	ui.visible = false
 
 
 func _on_level_2_button_pressed() -> void:
-	World.load_level("level_2")
+	get_parent().get_parent().load_level("level_2")
 	ui.visible = false
+
+
+func _on_level_3_button_pressed() -> void:
+	get_parent().get_parent().load_level("level_3")
+	ui.visible = false
+

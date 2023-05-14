@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bix035khn8spa"]
+[gd_scene load_steps=6 format=3 uid="uid://d2mubn4kf7hbg"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_rapf6"]
+[ext_resource type="Script" path="res://scenes/characters/Player.gd" id="1_c5d2p"]
 [ext_resource type="Script" path="res://scenes/characters/PlayerCamera.gd" id="2_x7pfi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_owj6d"]
@@ -12,9 +12,9 @@ albedo_color = Color(0.239216, 0.494118, 1, 1)
 size = Vector3(1, 2, 1)
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
 collision_mask = 6
-script = ExtResource("1_rapf6")
+script = ExtResource("1_c5d2p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_owj6d")
@@ -24,7 +24,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4hq67")
 shape = SubResource("BoxShape3D_g31fd")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.430137, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41, 0)
 target_position = Vector3(0, 0, 0)
 collision_mask = 6
 collide_with_areas = true

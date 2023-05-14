@@ -1,7 +1,5 @@
 extends Node
 
-signal has_exploded(position:Vector2)
-
 @onready var world = $"."
 var level_instance : Node3D = null
 

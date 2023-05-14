@@ -17,7 +17,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-World="*res://scenes/world.gd"
+Signals="*res://signals.gd"
+
+[display]
+
+window/layer_4="PowerUps"
+window/layer_3="Enemies"
+window/layer_2="Enviroment"
+window/layer_1="Player"
 
 [input]
 

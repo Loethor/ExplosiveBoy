@@ -69,6 +69,10 @@ text = "Level 1"
 layout_mode = 2
 text = "Level 2"
 
+[node name="Level3Button" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 3"
+
 [node name="BackButton" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
@@ -77,4 +81,5 @@ text = "Back"
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
 [connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/Level3Button" to="." method="_on_level_3_button_pressed"]
 [connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

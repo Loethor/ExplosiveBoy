@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxfatksofs8dh"]
+
+[ext_resource type="PackedScene" uid="uid://ccg6qvjjx3u85" path="res://scenes/components/map_component.tscn" id="3_6a5dr"]
+[ext_resource type="PackedScene" uid="uid://d2mubn4kf7hbg" path="res://scenes/characters/player.tscn" id="3_usm6c"]
+
+[node name="Level3" type="Node3D"]
+
+[node name="MapComponent" parent="." instance=ExtResource("3_6a5dr")]
+
+[node name="GridMap" parent="MapComponent" index="0"]
+data = {
+"cells": PackedInt32Array(65535, 0, 1048576, 0, 65535, 1048577, 65535, 65535, 1048576, 0, 0, 1048576)
+}
+
+[node name="Player" parent="." instance=ExtResource("3_usm6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[editable path="MapComponent"]
