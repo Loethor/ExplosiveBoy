@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbnapl4ypwgd0"]
+[gd_scene load_steps=5 format=3 uid="uid://cbnapl4ypwgd0"]
 
 [ext_resource type="Script" path="res://scenes/characters/explosion.gd" id="1_k800k"]
 
@@ -6,6 +6,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rc3ch"]
 albedo_color = Color(0.764706, 0.341176, 0.0941176, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6rnka"]
 
 [node name="Explosion" type="Node3D"]
 script = ExtResource("1_k800k")
@@ -17,5 +19,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rc3ch")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_6rnka")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

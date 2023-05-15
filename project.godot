@@ -73,3 +73,4 @@ menu={
 3d_physics/layer_2="Enviroment"
 3d_physics/layer_3="Enemies"
 3d_physics/layer_4="PowerUps"
+3d_physics/layer_5="Explosion"
