@@ -3,6 +3,11 @@ extends Node
 @onready var world = $"."
 var level_instance : Node3D = null
 
+func _ready() -> void:
+	Signals.connect("player_has_died", reset_game)
+
+func reset_game():
+	get_tree().reload_current_scene()
 
 
 func unload_level():

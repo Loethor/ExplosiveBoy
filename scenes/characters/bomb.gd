@@ -1,7 +1,7 @@
 extends Node3D
 
 const TILE_SIZE = 1
-var bomb_power = 1
+var bomb_power = 3
 
 @onready var collision := $StaticBody3D/CollisionShape3D
 @onready var bomb_area_of_efect = []
@@ -17,10 +17,10 @@ func _prepare_area_of_effect(bomb_power):
 
 func _ready() -> void:
 #	print("My name is %s "% name)
-	Signals.connect("has_exploded", _check_bomb_explosion)
+	Signals.connect("has_exploded", _check_chain_reaction)
 	_prepare_area_of_effect(bomb_power)
 
-func _check_bomb_explosion(explosion_position: Vector2):
+func _check_chain_reaction(explosion_position: Vector2):
 	var my_2d_position = Vector2(position.x, position.z)
 	if (my_2d_position == explosion_position) and not is_exploding:
 		explode()

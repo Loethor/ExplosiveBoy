@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr16tx2ymr8jd"]
+
+[ext_resource type="Script" path="res://scenes/characters/random_enemy.gd" id="1_feoq3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d1pxa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l13o7"]
+albedo_color = Color(0.717647, 0, 0.0862745, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h65iv"]
+
+[node name="RandomEnemy" type="CharacterBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
+collision_layer = 4
+script = ExtResource("1_feoq3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_d1pxa")
+surface_material_override/0 = SubResource("StandardMaterial3D_l13o7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_h65iv")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41, 0)
+target_position = Vector3(0, 0, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

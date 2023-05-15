@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 const TILE_SIZE = 1
-const MOVEMENT_DURATION = 0.25
+const MOVEMENT_DURATION = 0.15
+const MOVEMENT_COOLDOWN = 0.15
 const DIRECTIONS = {"right": Vector3.RIGHT,
 				"left": Vector3.LEFT,
 				"up": Vector3.FORWARD,
@@ -41,9 +42,18 @@ func place_bomb():
 	print("Bomb placed at %s" % bomb.global_position)
 	get_parent().add_child(bomb)
 
+func die():
+	Signals.emit_signal("player_has_died")
+	queue_free()
+
 func start_cooldown():
 	can_act = false
-	cooldown_timer.start(MOVEMENT_DURATION)
+	cooldown_timer.start(MOVEMENT_COOLDOWN)
 
 func _on_cooldown_timeout() -> void:
 	can_act = true
+
+func _on_detection_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("explosions") or body.is_in_group("enemies"):
+		print("%s killed the player" % body.name)
+		die()
