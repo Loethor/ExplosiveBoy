@@ -9,7 +9,6 @@ func _ready() -> void:
 func reset_game():
 	get_tree().reload_current_scene()
 
-
 func unload_level():
 	if(is_instance_valid(level_instance)):
 		level_instance.queue_free()

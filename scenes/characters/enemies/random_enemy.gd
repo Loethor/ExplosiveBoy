@@ -16,29 +16,25 @@ var can_move
 
 func _ready() -> void:
 	randomize()
-	try_to_move()
+	move()
 
-
-func try_to_move():
+func move():
 	can_move = false
 	var target_position
 	while(!can_move):
-		print(can_move)
 		var rand_index := randi() % DIRECTIONS.size()
 		var target_direction = DIRECTIONS[rand_index] * TILE_SIZE
-	#	var target_direction = Vector3.FORWARD * TILE_SIZE
 		target_position = global_position + target_direction
 		can_move = grid.is_position_free(target_position)
-	if (can_move):
-		start_cooldown()
-		var tween := create_tween()
-		tween.tween_property(self, "position", target_position, MOVEMENT_DURATION).set_trans(Tween.TRANS_LINEAR)
+	start_cooldown()
+	var tween := create_tween()
+	tween.tween_property(self, "position", target_position, MOVEMENT_DURATION).set_trans(Tween.TRANS_LINEAR)
 
 func start_cooldown():
 	cooldown_timer.start(MOVEMENT_COOLDOWN)
 
 func _on_cooldown_timer_timeout() -> void:
-	try_to_move()
+	move()
 
 func die():
 	queue_free()

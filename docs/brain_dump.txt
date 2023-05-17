@@ -1,1 +1,2 @@
-make explosion explode other bombs
+make explosion explode other bombs DONE
+make grind-based movement DONE

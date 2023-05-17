@@ -3,15 +3,15 @@ extends Node
 class_name MapComponent
 
 @onready var grid_map := $GridMap
-var explosion_resource := preload("res://scenes/characters/entities/explosion.tscn")
 
+var explosion_resource := preload("res://scenes/characters/entities/explosion.tscn")
 var grid_types = {
 	"floor": 0,
 	"brittle_block": 1,
 	"block": 2,
 }
-var target_grid_position:Vector3i
-var grid_id:int
+var target_grid_position: Vector3i
+var grid_id: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

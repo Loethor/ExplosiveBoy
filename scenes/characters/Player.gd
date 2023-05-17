@@ -35,16 +35,15 @@ func place_bomb():
 	# the bomb is created at player's position
 	bomb.position = position
 	bomb.position.y = 0
-
 	get_parent().add_child(bomb)
-
-func die():
-	Signals.emit_signal("player_has_died")
-	queue_free()
 
 func start_cooldown():
 	can_act = false
 	cooldown_timer.start(MOVEMENT_COOLDOWN)
+
+func die():
+	Signals.emit_signal("player_has_died")
+	queue_free()
 
 func _on_cooldown_timeout() -> void:
 	can_act = true
