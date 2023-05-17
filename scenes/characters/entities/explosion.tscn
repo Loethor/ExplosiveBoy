@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbnapl4ypwgd0"]
 
-[ext_resource type="Script" path="res://scenes/characters/explosion.gd" id="1_k800k"]
+[ext_resource type="Script" path="res://scenes/characters/entities/explosion.gd" id="1_yybvi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_brwo8"]
 
@@ -11,7 +11,7 @@ albedo_color = Color(0.764706, 0.341176, 0.0941176, 1)
 size = Vector3(0.9, 0.9, 0.9)
 
 [node name="Explosion" type="Node3D" groups=["explosions"]]
-script = ExtResource("1_k800k")
+script = ExtResource("1_yybvi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_brwo8")
@@ -23,10 +23,12 @@ autostart = true
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 16
-collision_mask = 5
+collision_mask = 37
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_6rnka")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

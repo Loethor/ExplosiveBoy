@@ -9,14 +9,14 @@
 albedo_color = Color(0.239216, 0.494118, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g31fd"]
-size = Vector3(1, 2, 1)
+size = Vector3(0.9, 2, 0.9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6l41"]
 size = Vector3(0.9, 2, 0.9)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
-collision_mask = 2
+collision_mask = 34
 script = ExtResource("1_c5d2p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -25,12 +25,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4hq67")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_g31fd")
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41, 0)
-target_position = Vector3(0, 0, 0)
-collision_mask = 2
-collide_with_areas = true
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 7, 5)
