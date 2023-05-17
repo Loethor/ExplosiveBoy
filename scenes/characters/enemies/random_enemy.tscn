@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://jcpmv2i3j7tv"]
+[gd_scene load_steps=6 format=3 uid="uid://jcpmv2i3j7tv"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/random_enemy.gd" id="1_niq1e"]
+[ext_resource type="PackedScene" uid="uid://n32554fgx8jw" path="res://scenes/components/behavior_component.tscn" id="2_vwn7q"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_d1pxa"]
 
@@ -24,5 +25,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_l13o7")
 shape = SubResource("BoxShape3D_dut8r")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="BehaviorComponent" parent="." instance=ExtResource("2_vwn7q")]
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

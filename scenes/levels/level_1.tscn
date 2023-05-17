@@ -19,4 +19,8 @@ data = {
 [node name="RandomEnemy" parent="." instance=ExtResource("3_h3p13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -9)
 
+[node name="BehaviorComponent" parent="RandomEnemy" index="3"]
+BehaviorType = 1
+
 [editable path="MapComponent"]
+[editable path="RandomEnemy"]

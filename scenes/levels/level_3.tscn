@@ -19,4 +19,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="RandomEnemy" parent="." instance=ExtResource("3_aifp6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
 
+[node name="BehaviorComponent" parent="RandomEnemy" index="3"]
+BehaviorType = 0
+
 [editable path="MapComponent"]
+[editable path="RandomEnemy"]
