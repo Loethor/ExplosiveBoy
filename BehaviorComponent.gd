@@ -16,7 +16,7 @@ var can_act := true
 var can_move
 
 enum BehaviorsEnum {random, passive, aggresive}
-@export var BehaviorType: BehaviorsEnum = BehaviorsEnum.passive
+@export var BehaviorType: BehaviorsEnum = BehaviorsEnum.random
 
 func _ready() -> void:
 	randomize()

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://jcpmv2i3j7tv"]
+[gd_scene load_steps=6 format=3 uid="uid://c0vkxpbyh6hc6"]
 
-[ext_resource type="Script" path="res://scenes/characters/enemies/random_enemy.gd" id="1_niq1e"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/enemy.gd" id="1_7ddfy"]
 [ext_resource type="PackedScene" uid="uid://n32554fgx8jw" path="res://scenes/components/behavior_component.tscn" id="2_vwn7q"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_d1pxa"]
@@ -11,11 +11,11 @@ albedo_color = Color(0.717647, 0, 0.0862745, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dut8r"]
 size = Vector3(0.9, 2, 0.9)
 
-[node name="RandomEnemy" type="CharacterBody3D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
 collision_layer = 4
 collision_mask = 34
-script = ExtResource("1_niq1e")
+script = ExtResource("1_7ddfy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_d1pxa")
