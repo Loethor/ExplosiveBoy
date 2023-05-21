@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgjcx0o8eg6ve"]
+[gd_scene load_steps=11 format=3 uid="uid://bgjcx0o8eg6ve"]
 
 [ext_resource type="Script" path="res://scenes/characters/entities/bomb.gd" id="2_tnaqw"]
 
@@ -109,9 +109,34 @@ shadow_mesh = SubResource("ArrayMesh_g5qnh")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcng3"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jojkr"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath("Timer:autostart")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath("Timer:wait_time")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath("Timer:one_shot")
+properties/3/spawn = true
+properties/3/sync = true
+properties/4/path = NodePath("CollisionShape3D:shape")
+properties/4/spawn = true
+properties/4/sync = true
+properties/5/path = NodePath(".:collision_layer")
+properties/5/spawn = true
+properties/5/sync = true
+properties/6/path = NodePath(".:collision_mask")
+properties/6/spawn = true
+properties/6/sync = true
+
 [node name="bomb" type="RigidBody3D" groups=["bombs"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_layer = 32
 collision_mask = 2
+sleeping = true
 script = ExtResource("2_tnaqw")
 
 [node name="bomb" type="MeshInstance3D" parent="."]
@@ -132,5 +157,8 @@ autostart = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_pcng3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_jojkr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -19,6 +19,7 @@ func _prepare_area_of_effect(bomb_power):
 func _ready() -> void:
 	_prepare_area_of_effect(bomb_power)
 
+@rpc("call_local")
 func explode() -> void:
 	print("BOOM")
 	if not is_exploding:
@@ -27,5 +28,6 @@ func explode() -> void:
 			Signals.emit_signal("has_exploded", targeted_area)
 		queue_free()
 
+@rpc("call_local")
 func _on_timer_timeout() -> void:
-	explode()
+	explode.rpc()

@@ -29,7 +29,7 @@ theme_override_constants/separation = 14
 
 [node name="Label" type="Label" parent="MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Explosive boy"
+text = "Explosive Boy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -41,7 +41,7 @@ text = "Play"
 layout_mode = 2
 text = "Exit"
 
-[node name="LevelSelector" type="MarginContainer" parent="."]
+[node name="MultiplayerOptions" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,35 +51,71 @@ offset_right = 1152.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="LevelSelector"]
+[node name="CenterContainer" type="CenterContainer" parent="MultiplayerOptions"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelector/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerOptions/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="AddressEdit" type="LineEdit" parent="MultiplayerOptions/CenterContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Ip Address of the Host"
+alignment = 1
+
+[node name="HostButton" type="Button" parent="MultiplayerOptions/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="MultiplayerOptions/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="BackButton" type="Button" parent="MultiplayerOptions/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="LevelSelector2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2304.0
+offset_right = 2304.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelSelector2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="LevelSelector/CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelector2/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelector2/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Choose a level:"
 
-[node name="Level1Button" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
+[node name="Level1Button" type="Button" parent="LevelSelector2/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Level 1"
 
-[node name="Level2Button" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
+[node name="Level2Button" type="Button" parent="LevelSelector2/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Level 2"
 
-[node name="Level3Button" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
+[node name="Level3Button" type="Button" parent="LevelSelector2/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Level 3"
 
-[node name="BackButton" type="Button" parent="LevelSelector/CenterContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="LevelSelector2/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
-[connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
-[connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/Level3Button" to="." method="_on_level_3_button_pressed"]
-[connection signal="pressed" from="LevelSelector/CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MultiplayerOptions/CenterContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="MultiplayerOptions/CenterContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="MultiplayerOptions/CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="LevelSelector2/CenterContainer/VBoxContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="LevelSelector2/CenterContainer/VBoxContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="LevelSelector2/CenterContainer/VBoxContainer/Level3Button" to="." method="_on_level_3_button_pressed"]

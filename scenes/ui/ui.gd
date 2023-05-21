@@ -2,8 +2,9 @@ extends Control
 
 @onready var ui := $"."
 @onready var main_menu := $MainMenu
-@onready var level_selector := $LevelSelector
+@onready var level_selector := $MultiplayerOptions
 #@onready var tween = get_tree().create_tween()
+@onready var world := $"../.."
 
 var menu_original_position := Vector2.ZERO
 var menu_original_size := Vector2.ZERO
@@ -28,6 +29,12 @@ func _unhandled_input(event):
 		else:
 			get_tree().paused = false
 
+
+func _on_host_button_pressed() -> void:
+	world.host()
+
+func _on_join_button_pressed() -> void:
+	world.join()
 
 func move_to_next_menu(next_menu_id: String):
 	var next_menu = get_menu_from_menu_id(next_menu_id)
@@ -84,3 +91,7 @@ func _on_level_2_button_pressed() -> void:
 func _on_level_3_button_pressed() -> void:
 	get_parent().get_parent().load_level("level_3")
 	ui.visible = false
+
+
+
+

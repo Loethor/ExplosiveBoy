@@ -9,16 +9,24 @@ const DIRECTIONS = {"right": Vector3.RIGHT,
 					"down": Vector3.BACK}
 
 @onready var cooldown_timer = $CooldownTimer
-@onready var grid := $"../MapComponent/"
+@onready var grid := $"../Level/MapComponent/"
+@onready var camera := $PlayerCamera
 
 var bomb_scene := preload("res://scenes/characters/entities/bomb.tscn")
 var can_act := true
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
+
 func _ready() -> void:
+	if not is_multiplayer_authority(): return
 	print(position)
 	print(global_position)
+	camera.current = true
+
 
 func _unhandled_input(event):
+	if not is_multiplayer_authority(): return
 	for direction in DIRECTIONS.keys():
 		if event.is_action_pressed(direction) and can_act:
 			var target_position = global_position + DIRECTIONS[direction] * TILE_SIZE
@@ -28,8 +36,9 @@ func _unhandled_input(event):
 				tween.tween_property(self, "position", target_position, MOVEMENT_DURATION).set_trans(Tween.TRANS_LINEAR)
 
 	if event.is_action_pressed("bomb") and can_act:
-		place_bomb()
+		place_bomb.rpc()
 
+@rpc("call_local")
 func place_bomb():
 	var bomb := bomb_scene.instantiate()
 	# the bomb is created at player's position
