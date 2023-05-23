@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://83mfbwv1edxh"]
+
+[ext_resource type="Script" path="res://game/network_state.gd" id="1_ib2fl"]
+
+[node name="network_state" type="Node"]
+script = ExtResource("1_ib2fl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

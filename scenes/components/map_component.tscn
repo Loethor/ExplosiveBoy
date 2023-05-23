@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccg6qvjjx3u85"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scenes/components/map_component.gd" id="1_kwkpl"]
-[ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/terrain/tileset.tres" id="2_wjkhi"]
+[ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/levels/terrain_assets/tileset.tres" id="2_wjkhi"]
 
 [node name="MapComponent" type="Node"]
 script = ExtResource("1_kwkpl")

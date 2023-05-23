@@ -4,7 +4,7 @@ class_name MapComponent
 
 @onready var grid_map := $GridMap
 
-var explosion_resource := preload("res://scenes/characters/entities/explosion.tscn")
+var explosion_resource := preload("res://characters/entities/explosion.tscn")
 var grid_types = {
 	"floor": 0,
 	"brittle_block": 1,

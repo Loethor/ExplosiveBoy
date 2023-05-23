@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxc88nwg761r0"]
+[gd_scene load_steps=6 format=3 uid="uid://bwkyp1fvpeesg"]
 
-[ext_resource type="PackedScene" uid="uid://cx8a0pu88r7sy" path="res://scenes/ui/simple_menu.tscn" id="2_lujbn"]
-[ext_resource type="PackedScene" uid="uid://cgcu5jwmbemyo" path="res://scenes/levels/demo.tscn" id="3_35s76"]
+[ext_resource type="Script" path="res://game/world.gd" id="1_awt50"]
+[ext_resource type="PackedScene" uid="uid://cgcu5jwmbemyo" path="res://scenes/levels/demo.tscn" id="1_drodb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bul0i"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,12 +17,15 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="world" type="Node"]
+script = ExtResource("1_awt50")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Level" parent="." instance=ExtResource("1_drodb")]
 
-[node name="SimpleMenu" parent="CanvasLayer" instance=ExtResource("2_lujbn")]
+[node name="Players" type="Node3D" parent="."]
 
-[node name="Level" parent="." instance=ExtResource("3_35s76")]
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://characters/player.tscn")
+spawn_path = NodePath("../Players")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t045v")
@@ -30,7 +33,3 @@ environment = SubResource("Environment_t045v")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/characters/player.tscn", "res://scenes/characters/entities/bomb.tscn", "res://scenes/characters/entities/explosion.tscn")
-spawn_path = NodePath("..")

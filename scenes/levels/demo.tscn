@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgcu5jwmbemyo"]
 
-[ext_resource type="PackedScene" uid="uid://ccg6qvjjx3u85" path="res://scenes/components/map_component.tscn" id="1_84jsp"]
+[ext_resource type="PackedScene" path="res://scenes/components/map_component.tscn" id="1_84jsp"]
 [ext_resource type="Script" path="res://scenes/levels/demo.gd" id="1_ade5k"]
 
 [node name="Level" type="Node3D"]
@@ -24,5 +24,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 4)
 
 [node name="Spawn4" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 4)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 8, 3)
 
 [editable path="MapComponent"]

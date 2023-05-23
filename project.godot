@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="ExplosiveBoy"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://game/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://bomb.png"
 
 [autoload]
 
-Signals="*res://signals.gd"
+Signals="*res://scenes/components/signals.gd"
+NetworkState="*res://game/network_state.tscn"
+GameState="*res://game/game_state.tscn"
 
 [debug]
 

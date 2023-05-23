@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx8a0pu88r7sy"]
+[gd_scene load_steps=3 format=3 uid="uid://dcb6mdbq463py"]
 
-[ext_resource type="Script" path="res://scenes/ui/SimpleMenu.gd" id="1_hnw6g"]
+[ext_resource type="Script" path="res://game/main_menu.gd" id="1_ae01i"]
+[ext_resource type="PackedScene" uid="uid://bwkyp1fvpeesg" path="res://game/world.tscn" id="2_jd1n4"]
 
-[node name="SimpleMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("ip_input", "port_input")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hnw6g")
+script = ExtResource("1_ae01i")
+map_scene = ExtResource("2_jd1n4")
+ip_input = NodePath("MarginContainer/VBoxContainer/HBoxContainer/IpAddressText")
+port_input = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PortText")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -52,11 +56,17 @@ text = "Host"
 layout_mode = 2
 alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="IpAddressText" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "localhost"
 placeholder_text = "Ip Address"
 alignment = 1
+
+[node name="PortText" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "4242"
+placeholder_text = "Port"
 
 [node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

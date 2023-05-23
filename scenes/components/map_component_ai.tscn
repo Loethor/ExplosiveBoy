@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlmeew3v7bekk"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/terrain/tileset.tres" id="1_2mtpr"]
-[ext_resource type="Script" path="res://Follow.gd" id="2_lod5f"]
+[ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/levels/terrain_assets/tileset.tres" id="1_2mtpr"]
+[ext_resource type="Script" path="res://scenes/scripts/Follow.gd" id="2_lod5f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_pcg1n"]
 vertices = PackedVector3Array(11, 0.2, -4, 8, 0.2, -4, 7.5, 0.2, -2, 11, 0.2, 0, -4, 0.2, 3, 3, 0.2, 3, 3.5, 0.2, -1, -4, 0.2, -3, 3.5, 0.2, -1, 11, 0.2, 0, 7.5, 0.2, -2, -4, 0.2, -3)

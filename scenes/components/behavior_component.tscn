@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://n32554fgx8jw"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://BehaviorComponent.gd" id="1_cfrdb"]
+[ext_resource type="Script" path="res://scenes/components/BehaviorComponent.gd" id="1_cfrdb"]
 
 [node name="BehaviorComponent" type="Node"]
 script = ExtResource("1_cfrdb")

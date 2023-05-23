@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://din565x050nsb"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://ccg6qvjjx3u85" path="res://scenes/components/map_component.tscn" id="3_6a5dr"]
-[ext_resource type="PackedScene" uid="uid://c0vkxpbyh6hc6" path="res://scenes/characters/enemies/enemy.tscn" id="3_aifp6"]
-[ext_resource type="PackedScene" uid="uid://d2mubn4kf7hbg" path="res://scenes/characters/player.tscn" id="3_usm6c"]
+[ext_resource type="PackedScene" path="res://scenes/components/map_component.tscn" id="3_6a5dr"]
+[ext_resource type="PackedScene" path="res://characters/enemies/enemy.tscn" id="3_aifp6"]
+[ext_resource type="PackedScene" path="res://characters/player.tscn" id="3_usm6c"]
 
 [node name="Level3" type="Node3D"]
 

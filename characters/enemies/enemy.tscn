@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0vkxpbyh6hc6"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scenes/characters/enemies/enemy.gd" id="1_7ddfy"]
-[ext_resource type="PackedScene" uid="uid://n32554fgx8jw" path="res://scenes/components/behavior_component.tscn" id="2_vwn7q"]
+[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_7ddfy"]
+[ext_resource type="PackedScene" path="res://scenes/components/behavior_component.tscn" id="2_vwn7q"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_d1pxa"]
 
