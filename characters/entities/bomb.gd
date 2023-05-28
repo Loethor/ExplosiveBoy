@@ -24,6 +24,7 @@ func explode() -> void:
 	print("BOOM")
 	if not is_exploding:
 		is_exploding = true
+		_supress_particles()
 		for targeted_area in bomb_area_of_efect:
 			Signals.emit_signal("has_exploded", targeted_area)
 		explosion_sound.play()
@@ -35,3 +36,6 @@ func explode() -> void:
 func _on_timer_timeout() -> void:
 	explode()
 
+func _supress_particles():
+	$FireParticles.emitting = false
+	$FireParticles.hide()

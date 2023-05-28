@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 	# Handle bomb.
 	if Input.is_action_pressed("bomb"):
 		$bomb_placed_sound.play()
-		start_cooldown()
+		start_cooldown() # TODO instead of this, just avoid placing bomb in the same spot, HOW?
 		place_bomb()
 
 	var target_position = Vector3.INF
@@ -72,7 +72,6 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemies"):
 		print("%s killed the player" % body.name)
 		die()
-
 
 func place_bomb():
 	var bomb := bomb_scene.instantiate()

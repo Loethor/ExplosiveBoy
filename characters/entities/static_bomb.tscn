@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt71kem20k1rx"]
+[gd_scene load_steps=11 format=3 uid="uid://dt71kem20k1rx"]
 
 [ext_resource type="PackedScene" uid="uid://o7g7s62nolik" path="res://models/bomb2.blend" id="1_n6lva"]
 [ext_resource type="Script" path="res://characters/entities/bomb.gd" id="2_oxuih"]
@@ -7,6 +7,40 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_e7wnx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pouxw"]
+
+[sub_resource type="Gradient" id="Gradient_jer6t"]
+offsets = PackedFloat32Array(0, 0.686957)
+colors = PackedColorArray(1, 0, 0, 1, 0.916371, 0.444993, 0.0752704, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nyrlr"]
+gradient = SubResource("Gradient_jer6t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j6ksy"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(0.05, 0.05, 0.05)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.8
+tangential_accel_min = 0.5
+tangential_accel_max = 0.8
+scale_min = 0.5
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_nyrlr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pc1b"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.513726)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1adxv"]
+material = SubResource("StandardMaterial3D_0pc1b")
+radius = 0.05
+height = 0.1
 
 [node name="bomb" groups=["bombs"] instance=ExtResource("1_n6lva")]
 collision_layer = 32
@@ -31,5 +65,11 @@ autostart = true
 [node name="explosion_sound" type="AudioStreamPlayer3D" parent="." index="6"]
 stream = ExtResource("3_jaj54")
 volume_db = -5.0
+
+[node name="FireParticles" type="GPUParticles3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22507, 0)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_j6ksy")
+draw_pass_1 = SubResource("SphereMesh_1adxv")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

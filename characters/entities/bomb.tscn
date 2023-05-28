@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0s2wbdvjnk6p"]
+[gd_scene load_steps=16 format=3 uid="uid://c0s2wbdvjnk6p"]
 
 [ext_resource type="AudioStream" uid="uid://djxrb2br6g4hl" path="res://audio/zelda_bomb_explosion.mp3" id="2_r6js0"]
 [ext_resource type="Script" path="res://characters/entities/bomb.gd" id="2_tnaqw"]
@@ -110,6 +110,40 @@ shadow_mesh = SubResource("ArrayMesh_g5qnh")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcng3"]
 
+[sub_resource type="Gradient" id="Gradient_817t8"]
+offsets = PackedFloat32Array(0, 0.686957)
+colors = PackedColorArray(1, 0, 0, 1, 0.916371, 0.444993, 0.0752704, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1h67m"]
+gradient = SubResource("Gradient_817t8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k2arf"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(0.05, 0.05, 0.05)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.8
+tangential_accel_min = 0.5
+tangential_accel_max = 0.8
+scale_min = 0.5
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_1h67m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5dht"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.513726)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ykt7y"]
+material = SubResource("StandardMaterial3D_y5dht")
+radius = 0.05
+height = 0.1
+
 [node name="bomb" type="RigidBody3D" groups=["bombs"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_layer = 32
@@ -137,7 +171,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_pcng3")
 
 [node name="explosion_sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 stream = ExtResource("2_r6js0")
 volume_db = -5.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_k2arf")
+draw_pass_1 = SubResource("SphereMesh_ykt7y")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
