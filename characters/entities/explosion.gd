@@ -9,6 +9,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	elif body.is_in_group("bombs"):
 		body.explode()
 
-@rpc("call_local")
 func _on_timer_timeout() -> void:
 	queue_free()

@@ -24,7 +24,7 @@ script = ExtResource("1_awt50")
 [node name="Players" type="Node3D" parent="."]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://characters/player.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/player.tscn", "res://characters/entities/bomb.tscn", "res://characters/entities/explosion.tscn")
 spawn_path = NodePath("../Players")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

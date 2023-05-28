@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://drtprqqa2y7as"]
 
 [ext_resource type="Script" path="res://characters/entities/explosion.gd" id="1_yybvi"]
 
@@ -13,13 +13,13 @@ size = Vector3(0.9, 0.9, 0.9)
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nmpwd"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/sync = true
+properties/0/sync = false
 properties/1/path = NodePath("Timer:wait_time")
 properties/1/spawn = true
-properties/1/sync = true
+properties/1/sync = false
 properties/2/path = NodePath("Timer:autostart")
 properties/2/spawn = true
-properties/2/sync = true
+properties/2/sync = false
 
 [node name="Explosion" type="Node3D" groups=["explosions"]]
 script = ExtResource("1_yybvi")

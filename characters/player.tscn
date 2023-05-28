@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c7d7d82etb5ef"]
 
 [ext_resource type="Script" path="res://characters/Player.gd" id="1_oywke"]
-[ext_resource type="PackedScene" path="res://characters/entities/bomb.tscn" id="2_6gdtq"]
+[ext_resource type="PackedScene" uid="uid://c0s2wbdvjnk6p" path="res://characters/entities/bomb.tscn" id="2_6gdtq"]
 [ext_resource type="Script" path="res://characters/PlayerCamera.gd" id="2_g2i4n"]
 [ext_resource type="Script" path="res://characters/Networking.gd" id="3_qe4j2"]
 
@@ -55,6 +55,11 @@ script = ExtResource("3_qe4j2")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Networking"]
 replication_config = SubResource("SceneReplicationConfig_5vckc")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+target_position = Vector3(1, 0, 0)
+collision_mask = 35
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
