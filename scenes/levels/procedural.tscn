@@ -33,5 +33,7 @@ cell_center_x = false
 cell_center_y = false
 cell_center_z = false
 script = ExtResource("2_ac776")
+noise_scale = 3.8
+crumble_limit = 0.32
 
 [node name="TestPlayer" parent="." instance=ExtResource("3_e18vg")]
