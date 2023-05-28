@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://nitpxkvtp00q"]
-
-[ext_resource type="Script" path="res://game/game_state.gd" id="1_eofoi"]
-
-[node name="game_state" type="Node"]
-script = ExtResource("1_eofoi")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

@@ -4,8 +4,15 @@ extends Control
 @export var ip_input : LineEdit
 @export var port_input : LineEdit
 
-var enet_peer = ENetMultiplayerPeer.new()
 
+func _on_single_player_button_pressed() -> void:
+	load_scene()
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
+
+
+# multiplayer
 func _ready():
 	# Start the server if Godot is passed the "--server" argument.
 	# This lets us host the server headless if we want :)
@@ -25,8 +32,6 @@ func load_scene():
 	get_tree().change_scene_to_packed(map_scene)
 
 
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
 
 
 #func add_player(peer_id):
@@ -40,3 +45,6 @@ func _on_exit_button_pressed() -> void:
 #func remove_player(peer_id):
 #	var player = get_node_or_null(str(peer_id))
 #	if player: player.queue_free()
+
+
+

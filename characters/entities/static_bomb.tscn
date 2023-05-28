@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt71kem20k1rx"]
+
+[ext_resource type="PackedScene" uid="uid://o7g7s62nolik" path="res://models/bomb2.blend" id="1_n6lva"]
+[ext_resource type="Script" path="res://characters/entities/bomb.gd" id="2_oxuih"]
+[ext_resource type="AudioStream" uid="uid://djxrb2br6g4hl" path="res://audio/zelda_bomb_explosion.mp3" id="3_jaj54"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e7wnx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pouxw"]
+
+[node name="bomb" groups=["bombs"] instance=ExtResource("1_n6lva")]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_oxuih")
+
+[node name="BombCollision" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_e7wnx")
+
+[node name="ExplosionDetectionArea" type="Area3D" parent="." index="4"]
+
+[node name="ExplosionCollision" type="CollisionShape3D" parent="ExplosionDetectionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_pouxw")
+
+[node name="Timer" type="Timer" parent="." index="5"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="explosion_sound" type="AudioStreamPlayer3D" parent="." index="6"]
+stream = ExtResource("3_jaj54")
+volume_db = -5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

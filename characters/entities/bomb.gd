@@ -4,6 +4,7 @@ const TILE_SIZE = 1
 
 @onready var collision := $CollisionShape3D
 @onready var bomb_area_of_efect = []
+@onready var explosion_sound = $explosion_sound
 
 var bomb_power = 1
 var is_exploding = false
@@ -25,7 +26,12 @@ func explode() -> void:
 		is_exploding = true
 		for targeted_area in bomb_area_of_efect:
 			Signals.emit_signal("has_exploded", targeted_area)
+		explosion_sound.play()
+		$bomb.hide()
+		$rope.hide()
+		await explosion_sound.finished
 		queue_free()
 
 func _on_timer_timeout() -> void:
 	explode()
+

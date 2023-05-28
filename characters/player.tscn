@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7d7d82etb5ef"]
+[gd_scene load_steps=9 format=3 uid="uid://c7d7d82etb5ef"]
 
 [ext_resource type="Script" path="res://characters/Player.gd" id="1_oywke"]
-[ext_resource type="PackedScene" uid="uid://c0s2wbdvjnk6p" path="res://characters/entities/bomb.tscn" id="2_6gdtq"]
 [ext_resource type="Script" path="res://characters/PlayerCamera.gd" id="2_g2i4n"]
-[ext_resource type="Script" path="res://characters/Networking.gd" id="3_qe4j2"]
+[ext_resource type="PackedScene" uid="uid://dt71kem20k1rx" path="res://characters/entities/static_bomb.tscn" id="2_r4afj"]
+[ext_resource type="AudioStream" uid="uid://8q60rv41tp6d" path="res://audio/place_bomb.mp3" id="4_4xeaf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_owj6d"]
 
@@ -16,22 +16,17 @@ size = Vector3(0.9, 2, 0.9)
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6l41"]
 size = Vector3(0.9, 2, 0.9)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5vckc"]
-properties/0/path = NodePath(".:sync_position")
-properties/0/spawn = true
-properties/0/sync = true
-
 [node name="Player" type="CharacterBody3D" groups=["players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_mask = 35
 script = ExtResource("1_oywke")
-bomb_scene = ExtResource("2_6gdtq")
+bomb_scene = ExtResource("2_r4afj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_owj6d")
 surface_material_override/0 = SubResource("StandardMaterial3D_4hq67")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_g31fd")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
@@ -47,19 +42,17 @@ offset = Vector3(0, 7, 5)
 collision_layer = 0
 collision_mask = 20
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+[node name="DetectionCollision" type="CollisionShape3D" parent="DetectionArea"]
 shape = SubResource("BoxShape3D_i6l41")
-
-[node name="Networking" type="Node" parent="."]
-script = ExtResource("3_qe4j2")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Networking"]
-replication_config = SubResource("SceneReplicationConfig_5vckc")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 target_position = Vector3(1, 0, 0)
 collision_mask = 35
+
+[node name="bomb_placed_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_4xeaf")
+volume_db = -5.0
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

@@ -1,5 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c0s2wbdvjnk6p"]
 
+[ext_resource type="AudioStream" uid="uid://djxrb2br6g4hl" path="res://audio/zelda_bomb_explosion.mp3" id="2_r6js0"]
 [ext_resource type="Script" path="res://characters/entities/bomb.gd" id="2_tnaqw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h714o"]
@@ -109,17 +110,6 @@ shadow_mesh = SubResource("ArrayMesh_g5qnh")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcng3"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jojkr"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/sync = false
-properties/1/path = NodePath("Timer:autostart")
-properties/1/spawn = true
-properties/1/sync = false
-properties/2/path = NodePath("Timer:wait_time")
-properties/2/spawn = true
-properties/2/sync = false
-
 [node name="bomb" type="RigidBody3D" groups=["bombs"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_layer = 32
@@ -146,7 +136,8 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_pcng3")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_jojkr")
+[node name="explosion_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_r6js0")
+volume_db = -5.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
