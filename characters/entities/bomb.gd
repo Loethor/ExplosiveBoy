@@ -19,6 +19,7 @@ func _prepare_area_of_effect(bomb_power):
 
 func _ready() -> void:
 	_prepare_area_of_effect(bomb_power)
+	$AnimationPlayer.play("bombAction")
 
 func explode() -> void:
 	print("BOOM")

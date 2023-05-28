@@ -18,8 +18,6 @@ config/icon="res://bomb.png"
 [autoload]
 
 Signals="*res://scenes/components/signals.gd"
-NetworkState="*res://game/network_state.tscn"
-GameState="*res://game/game_state.tscn"
 
 [debug]
 

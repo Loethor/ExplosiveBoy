@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnqlhrfkw5upt"]
+
+[ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/levels/terrain_assets/tileset.tres" id="1_r0iuh"]
+[ext_resource type="Script" path="res://scenes/levels/procedural.gd" id="2_ac776"]
+[ext_resource type="PackedScene" uid="uid://xfb5l3rsn2j5" path="res://characters/test_player.tscn" id="3_e18vg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_esul8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_n7crn"]
+sky_material = SubResource("ProceduralSkyMaterial_esul8")
+
+[sub_resource type="Environment" id="Environment_4gm70"]
+background_mode = 2
+sky = SubResource("Sky_n7crn")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4gm70")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="procedural_map" type="GridMap" parent="."]
+mesh_library = ExtResource("1_r0iuh")
+cell_size = Vector3(1, 1, 1)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+script = ExtResource("2_ac776")
+
+[node name="TestPlayer" parent="." instance=ExtResource("3_e18vg")]
