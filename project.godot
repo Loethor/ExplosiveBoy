@@ -18,6 +18,7 @@ config/icon="res://bomb.png"
 [autoload]
 
 Signals="*res://game/signals.gd"
+PlayerState="*res://game/player_state.gd"
 
 [debug]
 

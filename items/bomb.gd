@@ -1,3 +1,4 @@
+class_name Bomb
 extends Node3D
 
 const TILE_SIZE = 1
@@ -6,12 +7,11 @@ const TILE_SIZE = 1
 @onready var explosion_sound: AudioStreamPlayer3D = $explosion_sound
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
-var bomb_power = 1
 var is_exploding = false
 
 func _prepare_area_of_effect() -> void:
 	bomb_area_of_efect.append(Vector2(global_position.x, global_position.z))
-	for i in range(1, bomb_power + 1):
+	for i in range(1, PlayerState.bomb_power + 1):
 		bomb_area_of_efect.append(Vector2(global_position.x + TILE_SIZE * i, global_position.z ))
 		bomb_area_of_efect.append(Vector2(global_position.x, global_position.z + TILE_SIZE * i))
 		bomb_area_of_efect.append(Vector2(global_position.x - TILE_SIZE * i, global_position.z))
@@ -22,7 +22,6 @@ func _ready() -> void:
 	anim.play("bombAction")
 
 func explode() -> void:
-	print("BOOM")
 	if not is_exploding:
 		is_exploding = true
 		_supress_particles()

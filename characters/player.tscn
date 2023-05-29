@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2opoopb7syj"]
+[gd_scene load_steps=9 format=3 uid="uid://h2rdpaiuw7bi"]
 
 [ext_resource type="Script" path="res://characters/Player.gd" id="1_oywke"]
-[ext_resource type="PackedScene" path="res://items/entities/bomb.tscn" id="2_a8a5e"]
+[ext_resource type="PackedScene" uid="uid://cy0h4ax6wwpgn" path="res://items/bomb.tscn" id="2_8x10s"]
 [ext_resource type="Script" path="res://characters/PlayerCamera.gd" id="2_g2i4n"]
 [ext_resource type="AudioStream" uid="uid://8q60rv41tp6d" path="res://audio/place_bomb.mp3" id="4_4xeaf"]
 
@@ -20,7 +20,7 @@ size = Vector3(0.9, 2, 0.9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_mask = 35
 script = ExtResource("1_oywke")
-bomb_scene = ExtResource("2_a8a5e")
+bomb_scene = ExtResource("2_8x10s")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_owj6d")

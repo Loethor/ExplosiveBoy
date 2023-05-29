@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dygd3xib5sq65"]
+
+[ext_resource type="PackedScene" uid="uid://fgsqso5oguu3" path="res://models/powerups/bomb_power.glb" id="1_xent3"]
+[ext_resource type="Script" path="res://items/bomb_power.gd" id="2_utk8g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7s1p"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="bomb_power" instance=ExtResource("1_xent3")]
+script = ExtResource("2_utk8g")
+
+[node name="bomb_power2" parent="." index="0"]
+transform = Transform3D(-3.53077e-08, 0.807747, 0, -0.807747, -3.53077e-08, 0, 0, 0, 0.807747, 0, 0.5, 0)
+
+[node name="DetectionArea" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_j7s1p")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

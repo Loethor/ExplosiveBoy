@@ -26,10 +26,12 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	camera.make_current()
+	PlayerState.bomb_power = 1
 
 func _input(event: InputEvent) -> void:
 	if not can_act:
 		return
+
 	# Handle bomb.
 	if event.is_action_pressed("bomb"):
 		bomb_sound.play()
