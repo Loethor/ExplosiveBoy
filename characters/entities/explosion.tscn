@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://drtprqqa2y7as"]
+[gd_scene load_steps=10 format=3 uid="uid://drtprqqa2y7as"]
 
 [ext_resource type="Script" path="res://characters/entities/explosion.gd" id="1_yybvi"]
 
@@ -10,10 +10,46 @@ albedo_color = Color(0.764706, 0.341176, 0.0941176, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rnka"]
 size = Vector3(0.9, 0.9, 0.9)
 
+[sub_resource type="Gradient" id="Gradient_qrg2p"]
+offsets = PackedFloat32Array(0, 0.113043, 0.221739, 0.786957, 0.904348, 1)
+colors = PackedColorArray(0.760784, 0.694118, 0.196078, 0.101961, 0.760784, 0.694118, 0.196078, 0.882353, 0.76, 0.694387, 0.1976, 1, 0.633371, 0.284368, 0.057909, 1, 0.635294, 0.286275, 0.0588235, 0.890196, 0.635294, 0.286275, 0.0588235, 0.0117647)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n1b4w"]
+gradient = SubResource("Gradient_qrg2p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3e4rd"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+linear_accel_min = 2.0
+linear_accel_max = 2.0
+radial_accel_min = 2.0
+radial_accel_max = 2.0
+damping_min = 10.0
+damping_max = 10.0
+scale_min = 0.1
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_n1b4w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e1wa"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.729412)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2s4t0"]
+material = SubResource("StandardMaterial3D_8e1wa")
+radial_segments = 8
+rings = 8
+
 [node name="Explosion" type="Node3D" groups=["explosions"]]
 script = ExtResource("1_yybvi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_brwo8")
 surface_material_override/0 = SubResource("StandardMaterial3D_rc3ch")
 
@@ -28,6 +64,15 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_6rnka")
+
+[node name="ExplosionParticles" type="GPUParticles3D" parent="."]
+amount = 70
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+process_material = SubResource("ParticleProcessMaterial_3e4rd")
+draw_pass_1 = SubResource("SphereMesh_2s4t0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
