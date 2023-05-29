@@ -2,7 +2,7 @@ extends Node
 
 class_name MapComponent
 
-@onready var grid_map := $GridMap
+@onready var grid_map: GridMap = $GridMap
 
 var explosion_resource := preload("res://characters/entities/explosion.tscn")
 var grid_types = {
@@ -15,11 +15,12 @@ var grid_id: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Signals.has_exploded.connect(_explosion_on_area.bind())
+	if Signals.has_exploded.connect(_explosion_on_area.bind()):
+		printerr("Error connecting: has_exploded")
 
-func is_position_free(target_position:Vector3)->bool:
+func is_position_free(target_position:Vector3) -> bool:
 	# convert target position (3D vector) into grid position (3Di vector)
-	target_grid_position = Vector3i(target_position.x, 0, target_position.z)
+	target_grid_position = Vector3i(int(target_position.x), 0, int(target_position.z))
 	grid_id = grid_map.get_cell_item(target_grid_position)
 
 	# only floor is allowed movement
@@ -28,10 +29,10 @@ func is_position_free(target_position:Vector3)->bool:
 	else:
 		return false
 
-func _explosion_on_area(target_area:Vector2):
+func _explosion_on_area(target_area:Vector2) -> void:
 
 	# convert target area (2D vector) into grid position (3D vector)
-	target_grid_position = Vector3i(target_area.x, 0, target_area.y)
+	target_grid_position = Vector3i(int(target_area.x), 0, int(target_area.y))
 	grid_id = grid_map.get_cell_item(target_grid_position)
 
 	# destroy brittle block

@@ -29,7 +29,6 @@ gdscript/warnings/unsafe_call_argument=1
 
 [display]
 
-window/size/always_on_top=true
 window/layer_4="PowerUps"
 window/layer_3="Enemies"
 window/layer_2="Enviroment"

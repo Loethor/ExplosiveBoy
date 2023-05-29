@@ -9,41 +9,43 @@ const DIRECTIONS = {"right": Vector3.RIGHT,
 					"up": Vector3.FORWARD,
 					"down": Vector3.BACK}
 
-@onready var cooldown_timer = $CooldownTimer
-@onready var grid = $"/root/world/Level/MapComponent"
-@onready var camera := $PlayerCamera
-@onready var ray := $RayCast3D
+@onready var cooldown_timer:Timer = $CooldownTimer
+@onready var map: MapComponent = $"/root/world/Level/MapComponent"
+@onready var camera: Camera3D = $PlayerCamera
+@onready var ray: RayCast3D= $RayCast3D
+@onready var bomb_sound: AudioStreamPlayer3D = $bomb_placed_sound
 
-@export var bomb_scene : PackedScene
+@export var bomb_scene: PackedScene
 var can_act := true
 
 
 func _enter_tree() -> void:
-	position = $"/root/world/Level".obtain_spawn()
+	var level: DemoLevel  = $"/root/world/Level" #TODO maybe these spawn positions should be global
+	position = level.obtain_spawn()
 	print(position)
 
-func _ready():
-	$PlayerCamera.make_current()
+func _ready() -> void:
+	camera.make_current()
 
 func _input(event: InputEvent) -> void:
 	if not can_act:
 		return
 	# Handle bomb.
-	if Input.is_action_pressed("bomb"):
-		$bomb_placed_sound.play()
+	if event.is_action_pressed("bomb"):
+		bomb_sound.play()
 		start_cooldown() # TODO instead of this, just avoid placing bomb in the same spot, HOW?
 		place_bomb()
 
 	var target_position = Vector3.INF
 	var target_direction = Vector3.INF
 
-	if Input.is_action_pressed("right"):
+	if event.is_action_pressed("right"):
 		target_direction = DIRECTIONS["right"]
-	if Input.is_action_pressed("left"):
+	if event.is_action_pressed("left"):
 		target_direction = DIRECTIONS["left"]
-	if Input.is_action_pressed("up"):
+	if event.is_action_pressed("up"):
 		target_direction = DIRECTIONS["up"]
-	if Input.is_action_pressed("down"):
+	if event.is_action_pressed("down"):
 		target_direction = DIRECTIONS["down"]
 
 	target_position = position + target_direction * TILE_SIZE
@@ -51,18 +53,20 @@ func _input(event: InputEvent) -> void:
 	if target_position != Vector3.INF:
 		ray.target_position =  target_direction * TILE_SIZE
 		ray.force_raycast_update()
-		if (grid.is_position_free(target_position) and !ray.is_colliding()):
+		if (map.is_position_free(target_position) and !ray.is_colliding()):
 			start_cooldown()
 			var tween := create_tween()
 			tween.tween_property(self, "position", target_position, MOVEMENT_DURATION).set_trans(Tween.TRANS_LINEAR)
 
 
-func start_cooldown():
+func start_cooldown() -> void:
 	can_act = false
 	cooldown_timer.start(MOVEMENT_COOLDOWN)
 
-func die():
-	Signals.emit_signal("player_has_died")
+func die() -> void:
+	var signal_error = Signals.emit_signal("player_has_died")
+	if signal_error:
+		printerr("Error on signal: player_has_died")
 	queue_free()
 
 func _on_cooldown_timeout() -> void:
@@ -73,8 +77,8 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 		print("%s killed the player" % body.name)
 		die()
 
-func place_bomb():
-	var bomb := bomb_scene.instantiate()
+func place_bomb() -> void:
+	var bomb:StaticBody3D = bomb_scene.instantiate()
 	# the bomb is created at player's position
 	bomb.position = position
 	bomb.position.y = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://6htmxw4medmu"]
 
 [ext_resource type="Script" path="res://scenes/components/map_component.gd" id="1_kwkpl"]
 [ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/levels/terrain_assets/tileset.tres" id="2_wjkhi"]

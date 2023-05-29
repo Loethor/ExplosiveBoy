@@ -3,7 +3,7 @@ extends Node
 @export var PlayerScene = preload("res://characters/player.tscn")
 @onready var level = $Level
 
-func _ready():
+func _ready() -> void:
 	create_player()
 
 func create_player() -> void:
