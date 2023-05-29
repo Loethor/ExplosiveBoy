@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlj131se0wkcb"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_ogy1v"]
+
+[sub_resource type="Theme" id="Theme_8qqlq"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ogy1v")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 42.0
+offset_right = 219.0
+offset_bottom = 83.0
+theme = SubResource("Theme_8qqlq")
+max_value = 3.0
+step = 1.0
+value = 2.0
+show_percentage = false

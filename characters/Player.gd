@@ -26,7 +26,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	camera.make_current()
-	PlayerState.bomb_power = 1
 
 func _input(event: InputEvent) -> void:
 	if not can_act:
@@ -70,6 +69,12 @@ func die() -> void:
 	if signal_error:
 		printerr("Error on signal: player_has_died")
 	queue_free()
+
+
+func take_damage(how_much: int) -> void:
+	PlayerState.current_hp -= how_much
+	if PlayerState.current_hp == 0:
+		die()
 
 func _on_cooldown_timeout() -> void:
 	can_act = true

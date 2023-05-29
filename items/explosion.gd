@@ -10,7 +10,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemies"):
 		body.die()
 	elif body.is_in_group("players"):
-		body.die()
+		body.take_damage(1)
 
 func _on_timer_timeout() -> void:
 	queue_free()

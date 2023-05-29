@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://h2rdpaiuw7bi"]
+[gd_scene load_steps=10 format=3 uid="uid://h2rdpaiuw7bi"]
 
 [ext_resource type="Script" path="res://characters/Player.gd" id="1_oywke"]
 [ext_resource type="PackedScene" uid="uid://cy0h4ax6wwpgn" path="res://items/bomb.tscn" id="2_8x10s"]
 [ext_resource type="Script" path="res://characters/PlayerCamera.gd" id="2_g2i4n"]
 [ext_resource type="AudioStream" uid="uid://8q60rv41tp6d" path="res://audio/place_bomb.mp3" id="4_4xeaf"]
+[ext_resource type="PackedScene" uid="uid://dlj131se0wkcb" path="res://scenes/ui/hud.tscn" id="5_we5ou"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_owj6d"]
 
@@ -53,6 +54,10 @@ collision_mask = 35
 [node name="BombPlacedSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_4xeaf")
 volume_db = -5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_we5ou")]
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
