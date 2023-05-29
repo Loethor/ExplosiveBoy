@@ -13,7 +13,7 @@ const DIRECTIONS = {"right": Vector3.RIGHT,
 @onready var map: MapComponent = $"/root/world/Level/MapComponent"
 @onready var camera: Camera3D = $PlayerCamera
 @onready var ray: RayCast3D= $RayCast3D
-@onready var bomb_sound: AudioStreamPlayer3D = $bomb_placed_sound
+@onready var bomb_sound: AudioStreamPlayer3D = $BombPlacedSound
 
 @export var bomb_scene: PackedScene
 var can_act := true

@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dt71kem20k1rx"]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="PackedScene" uid="uid://o7g7s62nolik" path="res://models/bomb2.blend" id="1_accqf"]
 [ext_resource type="AudioStream" uid="uid://djxrb2br6g4hl" path="res://audio/zelda_bomb_explosion.mp3" id="2_r6js0"]
-[ext_resource type="Script" path="res://characters/entities/bomb.gd" id="2_tnaqw"]
+[ext_resource type="Script" path="res://items/entities/bomb.gd" id="2_tnaqw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e7wnx"]
 

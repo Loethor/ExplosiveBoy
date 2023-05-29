@@ -1,8 +1,10 @@
-extends Node3D
 class_name Explosion
+extends Node3D
 
 @onready var explosion_particles :GPUParticles3D = $ExplosionParticles
 
+func _ready() -> void:
+	explosion_particles.emitting = true
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemies"):
@@ -11,7 +13,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		body.die()
 
 func _on_timer_timeout() -> void:
-	await explosion_particles.emitting
 	queue_free()
 
 

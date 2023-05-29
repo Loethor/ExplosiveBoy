@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgcu5jwmbemyo"]
 
-[ext_resource type="PackedScene" uid="uid://6htmxw4medmu" path="res://scenes/components/map_component.tscn" id="1_84jsp"]
+[ext_resource type="PackedScene" uid="uid://ce5crt8fdjv0r" path="res://scenes/components/map_component.tscn" id="1_84jsp"]
 [ext_resource type="Script" path="res://scenes/levels/demo.gd" id="1_ade5k"]
 
 [node name="Level" type="Node3D"]

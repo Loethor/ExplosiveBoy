@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://6htmxw4medmu"]
+[gd_scene load_steps=3 format=3 uid="uid://ce5crt8fdjv0r"]
 
 [ext_resource type="Script" path="res://scenes/components/map_component.gd" id="1_kwkpl"]
-[ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/levels/terrain_assets/tileset.tres" id="2_wjkhi"]
+[ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/levels/terrain_assets/tileset.tres" id="2_am036"]
 
 [node name="MapComponent" type="Node"]
 script = ExtResource("1_kwkpl")
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("2_wjkhi")
+mesh_library = ExtResource("2_am036")
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
 cell_center_y = false

@@ -17,7 +17,7 @@ config/icon="res://bomb.png"
 
 [autoload]
 
-Signals="*res://scenes/components/signals.gd"
+Signals="*res://game/signals.gd"
 
 [debug]
 

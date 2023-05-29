@@ -1,11 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://drtprqqa2y7as"]
+[gd_scene load_steps=8 format=3 uid="uid://cehmfuv3dri8s"]
 
-[ext_resource type="Script" path="res://characters/entities/explosion.gd" id="1_yybvi"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_brwo8"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rc3ch"]
-albedo_color = Color(0.764706, 0.341176, 0.0941176, 1)
+[ext_resource type="Script" path="res://items/entities/explosion.gd" id="1_v0psa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rnka"]
 size = Vector3(0.9, 0.9, 0.9)
@@ -46,12 +41,7 @@ radial_segments = 8
 rings = 8
 
 [node name="Explosion" type="Node3D" groups=["explosions"]]
-script = ExtResource("1_yybvi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("BoxMesh_brwo8")
-surface_material_override/0 = SubResource("StandardMaterial3D_rc3ch")
+script = ExtResource("1_v0psa")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
@@ -66,6 +56,7 @@ monitorable = false
 shape = SubResource("BoxShape3D_6rnka")
 
 [node name="ExplosionParticles" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 70
 lifetime = 0.25
 one_shot = true

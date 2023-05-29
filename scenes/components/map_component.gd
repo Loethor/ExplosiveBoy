@@ -1,10 +1,11 @@
+class_name MapComponent
 extends Node
 
-class_name MapComponent
 
 @onready var grid_map: GridMap = $GridMap
 
-var explosion_resource := preload("res://characters/entities/explosion.tscn")
+# TODO this is wrong, why map component has explosion?
+var explosion_resource := preload("res://items/entities/explosion.tscn")
 var grid_types = {
 	"floor": 0,
 	"brittle_block": 1,
