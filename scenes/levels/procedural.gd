@@ -38,7 +38,10 @@ func generate_chunk(pos):
 					set_cell_item(cell_pos, 1)
 				elif crumble_limit <= coord and coord < block_limit:
 					set_cell_item(cell_pos, 0)
-				else:
+				elif block_limit <= coord and coord < 0.8:
 					set_cell_item(cell_pos, 2)
+				else:
+					set_cell_item(cell_pos, 3)
+
 				visited_positions[coord_position] = 0
 

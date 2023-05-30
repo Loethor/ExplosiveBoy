@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnqlhrfkw5upt"]
 
-[ext_resource type="MeshLibrary" uid="uid://d2n4gpo72nbw2" path="res://scenes/levels/terrain_assets/tileset.tres" id="1_r0iuh"]
+[ext_resource type="MeshLibrary" uid="uid://dgvh0cemrj3cc" path="res://scenes/levels/terrain_assets/tileset2.tres" id="1_hd346"]
 [ext_resource type="Script" path="res://scenes/levels/procedural.gd" id="2_ac776"]
-[ext_resource type="PackedScene" uid="uid://xfb5l3rsn2j5" path="res://characters/test_player.tscn" id="3_e18vg"]
+[ext_resource type="PackedScene" path="res://characters/test_player.tscn" id="3_e18vg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_esul8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,15 +27,17 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="procedural_map" type="GridMap" parent="."]
-mesh_library = ExtResource("1_r0iuh")
+mesh_library = ExtResource("1_hd346")
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
 cell_center_y = false
 cell_center_z = false
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("2_ac776")
 noise_scale_x = 5.0
 noise_scale_y = 6.0
 crumble_limit = 0.32
-block_limit = 0.64
+block_limit = 0.62
 
 [node name="TestPlayer" parent="." instance=ExtResource("3_e18vg")]

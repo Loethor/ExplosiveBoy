@@ -1,17 +1,79 @@
-[gd_scene load_steps=2 format=3 uid="uid://6t1m7bxik0r2"]
+[gd_scene load_steps=10 format=3 uid="uid://6t1m7bxik0r2"]
 
 [ext_resource type="PackedScene" uid="uid://cp7771kbk01fw" path="res://models/tileset.glb" id="1_j3nrk"]
+[ext_resource type="Shader" path="res://scenes/levels/terrain_assets/Water.gdshader" id="2_1oeuc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4jt7f"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dvi0t"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7dxx"]
+seamless = true
+as_normal_map = true
+bump_strength = 9.4
+noise = SubResource("FastNoiseLite_dvi0t")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vkka5"]
+noise_type = 3
+seed = 10
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_id477"]
+seamless = true
+as_normal_map = true
+bump_strength = 7.3
+noise = SubResource("FastNoiseLite_vkka5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yo0g"]
+render_priority = 0
+shader = ExtResource("2_1oeuc")
+shader_parameter/albedo = Color(0.180392, 0.443137, 0.705882, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(2, 0)
+shader_parameter/time_scale = 0.0
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_w7dxx")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_id477")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nvj8r"]
 
 [node name="tileset" instance=ExtResource("1_j3nrk")]
+
+[node name="tile" parent="." index="0"]
+layers = 2
 
 [node name="StaticBody3D" parent="tile" index="0"]
 collision_layer = 2
 collision_mask = 0
 
+[node name="tile_brittle_block" parent="." index="1"]
+layers = 2
+
 [node name="StaticBody3D" parent="tile_brittle_block" index="0"]
 collision_layer = 2
 collision_mask = 0
 
+[node name="tile_block" parent="." index="2"]
+layers = 2
+
 [node name="StaticBody3D" parent="tile_block" index="0"]
 collision_layer = 2
 collision_mask = 0
+
+[node name="water" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -4)
+layers = 2
+mesh = SubResource("BoxMesh_4jt7f")
+surface_material_override/0 = SubResource("ShaderMaterial_2yo0g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="water" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_nvj8r")
