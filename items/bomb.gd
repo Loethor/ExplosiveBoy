@@ -29,6 +29,8 @@ func _process(delta: float) -> void:
 
 func explode() -> void:
 	if not is_exploding:
+		if PlayerState.current_bombs < PlayerState.max_bombs:
+			PlayerState.current_bombs += 1
 		timer_label.hide()
 		is_exploding = true
 		_supress_particles()

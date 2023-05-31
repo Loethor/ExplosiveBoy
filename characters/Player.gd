@@ -33,9 +33,11 @@ func _input(event: InputEvent) -> void:
 
 	# Handle bomb.
 	if event.is_action_pressed("bomb"):
-		bomb_sound.play()
-		start_cooldown() # TODO instead of this, just avoid placing bomb in the same spot, HOW?
-		place_bomb()
+		if PlayerState.current_bombs > 0:
+			PlayerState.current_bombs -= 1
+			bomb_sound.play()
+			start_cooldown()
+			place_bomb()
 
 	var target_position = Vector3.INF
 	var target_direction = Vector3.INF
@@ -69,7 +71,6 @@ func die() -> void:
 	if signal_error:
 		printerr("Error on signal: player_has_died")
 	queue_free()
-
 
 func take_damage(how_much: int) -> void:
 	PlayerState.current_hp -= how_much

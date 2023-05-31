@@ -4,6 +4,9 @@ signal bomb_power_changed(new_value)
 signal max_hp_changed()
 signal current_hp_changed()
 
+signal max_bombs_changed()
+signal current_bombs_changed()
+
 var bomb_power: int = 1:
 	get:
 		return bomb_power
@@ -26,3 +29,17 @@ var current_hp: int = 3:
 	set(value):
 		current_hp = value
 		current_hp_changed.emit()
+
+var max_bombs: int = 3:
+	get:
+		return max_bombs
+	set(value):
+		max_bombs = value
+		max_bombs_changed.emit()
+
+var current_bombs: int = 3:
+	get:
+		return current_bombs
+	set(value):
+		current_bombs = value
+		current_bombs_changed.emit()
