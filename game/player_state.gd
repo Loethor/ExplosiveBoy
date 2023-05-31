@@ -35,6 +35,7 @@ var max_bombs: int = 3:
 		return max_bombs
 	set(value):
 		max_bombs = value
+		current_bombs = max_bombs
 		max_bombs_changed.emit()
 
 var current_bombs: int = 3:
