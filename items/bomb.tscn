@@ -72,4 +72,10 @@ amount = 50
 process_material = SubResource("ParticleProcessMaterial_j6ksy")
 draw_pass_1 = SubResource("SphereMesh_1adxv")
 
+[node name="time_label" type="Label3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04629, 0)
+pixel_size = 0.01
+billboard = 1
+text = "placeholder"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
